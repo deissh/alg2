@@ -15,6 +15,13 @@ class Tree(Generic[T]):
     def __init__(self):
         self.node = None
 
+    def __getitem__(self, _id: str) -> Optional[Node[T]]:
+        for node, _ in self:
+            if node.id == _id:
+                return node
+
+        return None
+
     @property
     def is_empty(self) -> bool:
         return self.node is None
@@ -49,5 +56,8 @@ class Tree(Generic[T]):
 
         level += 1
         for child in node.children:
+            if child is None:
+                continue
+
             for grandchild, level in self.__next(child, level):
                 yield grandchild, level

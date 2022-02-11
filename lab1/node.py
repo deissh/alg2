@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import uuid
-from typing import TypeVar, Generic, List
+from typing import TypeVar, Generic, List, Optional
 from dataclasses import dataclass, field
 
 T = TypeVar('T')
@@ -11,8 +11,8 @@ T = TypeVar('T')
 class Node(Generic[T]):
     value: T
 
-    id: uuid.UUID = field(default_factory=lambda: uuid.uuid4())
-    children: List[Node] = field(default_factory=list)
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    children: List[Optional[Node]] = field(default_factory=list)
 
     def __str__(self):
-        return f"Node(value={self.value})"
+        return f"Node(id={self.id}, value={self.value})"

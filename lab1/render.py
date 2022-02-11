@@ -40,6 +40,9 @@ class RenderTree(Generic[T]):
 
         level += 1
         for child in node.children:
+            if child is None:
+                continue
+
             for grandchild in self.__next(child, continues + (not RenderTree.__is_last, ), level=level):
                 yield grandchild
 

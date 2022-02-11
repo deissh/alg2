@@ -1,37 +1,35 @@
-from tree import Tree, Node
+import json
+import random
+import pprint
 
+from bin_tree import BTree
 from render import RenderTree
 
-tree = Tree[int]()
+from utils import EnhancedJSONEncoder
 
-tree.node = Node(
-    value=1,
-    children=[
-        Node(
-            value=3,
-            children=[
-                Node(
-                    value=1,
-                    children=[Node(
-                        value=1
-                    )]
-                ),
-                Node(
-                    value=1
-                ),
-                Node(
-                    value=4
-                )
-            ],
-        ),
-        Node(value=2)
-    ]
-)
+random.seed(1)
 
-print("stats")
-print(f"count={tree.count}")
-print(f"depth={tree.depth}")
 
-print("\nrender tree")
-for pre, _, node in RenderTree(tree):
-    print(f"{pre}{node}")
+def print_tree(tree):
+    print("stats")
+    print(f"count={tree.count}")
+    print(f"depth={tree.depth}")
+
+    print("\nrender tree")
+    for pre, _, node in RenderTree(tree):
+        print(f"{pre}{node}")
+
+
+print("\n\nBinTree")
+
+btree = BTree[int]()
+
+for _ in range(30):
+    btree.add(random.randint(0, 50))
+
+btree.rm(36)
+print_tree(btree)
+
+
+with open("tree.dump.json", "w+") as f:
+    f.write(json.dumps(btree.node, cls=EnhancedJSONEncoder, indent=2))

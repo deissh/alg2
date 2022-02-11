@@ -1,0 +1,56 @@
+{
+  "value": 8,
+  "id": "5f366176-3f38-409b-a6ad-b23560c7d779",
+  "children": [
+    {
+      "value": 4,
+      "id": "4390b85c-cbdd-4f30-8cf4-ed0d41759508",
+      "children": [
+        {
+          "value": 1,
+          "id": "6d658192-4672-4a60-a89c-858fbcff69d0",
+          "children": [
+            {
+              "value": 0,
+              "id": "8846ca34-7dcb-4551-bf4c-76cd57d157db",
+              "children": [
+                null,
+                null
+              ]
+            },
+            null
+          ]
+        },
+        {
+          "value": 7,
+          "id": "71df50e8-23c5-4de8-8e5f-d442ad4eba74",
+          "children": [
+            {
+              "value": 6,
+              "id": "b835e3dc-7b49-483e-b247-c35e20dd5364",
+              "children": [
+                null,
+                {
+                  "value": 6,
+                  "id": "2575ee40-4cdd-42a7-8299-6bcf0030f163",
+                  "children": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "value": 8,
+      "id": "11954517-8e1e-46f9-aae2-7e20f85b4527",
+      "children": [
+        null
+      ]
+    }
+  ]
+}
