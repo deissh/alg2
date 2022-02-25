@@ -24,26 +24,29 @@ class AsciiStyle(RenderStyle):
     end = "+-- "
 
 
-class RenderTree(Generic[T]):
+class Render(Generic[T]):
     node: Node[T]
     style: RenderStyle
 
-    def __init__(self, tree: Tree[T], style: RenderStyle = AsciiStyle()):
-        self.node = tree.node
+    def __init__(self, node: Node[T], style: RenderStyle = AsciiStyle()):
+        self.node = node
         self.style = style
 
     def __iter__(self) -> Iterable[Row]:
         return self.__next(self.node, tuple())
 
     def __next(self, node: Node[T], continues: Tuple, level=0) -> Iterable[Row]:
-        yield RenderTree.__item_render(node, continues, self.style)
+        yield Render.__item_render(node, continues, self.style)
+
+        if node is None:
+            return
 
         level += 1
         for child in node.children:
             if child is None:
                 continue
 
-            for grandchild in self.__next(child, continues + (not RenderTree.__is_last, ), level=level):
+            for grandchild in self.__next(child, continues + (not Render.__is_last,), level=level):
                 yield grandchild
 
     @staticmethod

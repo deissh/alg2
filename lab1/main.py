@@ -1,9 +1,8 @@
 import json
 import random
-import pprint
 
 from bin_tree import BTree
-from render import RenderTree
+from render import Render
 
 from utils import EnhancedJSONEncoder
 
@@ -16,7 +15,7 @@ def print_tree(tree):
     print(f"depth={tree.depth}")
 
     print("\nrender tree")
-    for pre, _, node in RenderTree(tree):
+    for pre, _, node in Render(tree.node):
         print(f"{pre}{node}")
 
 
