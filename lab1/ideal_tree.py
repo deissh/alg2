@@ -13,11 +13,9 @@ def ibal(n: int = 0) -> Optional[Node[T]]:
 
     new_node = Node(n)
 
-    l_node = ibal(n // 2)
-    if l_node is not None:
+    if l_node := ibal(n // 2):
         new_node.children.append(l_node)
-    r_node = ibal(n - n // 2 - 1)
-    if r_node is not None:
+    if r_node := ibal(n - n // 2 - 1):
         new_node.children.append(r_node)
 
     return new_node
