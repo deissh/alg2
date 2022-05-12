@@ -1,7 +1,7 @@
 from typing import TypeVar, Optional
 from operator import sub
 
-from lab1.render import Render
+from render import Render
 from node import Node
 
 T = TypeVar("T")
@@ -11,7 +11,7 @@ def ibal(n: int = 0) -> Optional[Node[T]]:
     if n <= 0:
         return None
 
-    new_node = Node(n)
+    new_node = Node(value=n - 1)
 
     if l_node := ibal(n // 2):
         new_node.children.append(l_node)
@@ -37,7 +37,7 @@ def is_ideal(node: Node[T]) -> bool:
 
 
 if __name__ == "__main__":
-    node = ibal(2)
+    node = ibal(20)
 
     print("ideal", is_ideal(node))
 

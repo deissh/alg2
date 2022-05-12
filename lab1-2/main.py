@@ -19,16 +19,16 @@ def print_tree(tree):
         print(f"{pre}{node}")
 
 
-print("\n\nBinTree")
+if __name__ == '__main__':
+    print("\n\nBinTree")
 
-btree = BTree[int]()
+    btree = BTree[int]()
 
-for _ in range(30):
-    btree.add(random.randint(0, 50))
+    for _ in range(9):
+        btree.add(random.randint(0, 10))
 
-btree.rm(36)
-print_tree(btree)
+    # btree.rm(36)
+    print_tree(btree)
 
-
-with open("tree.dump.json", "w+") as f:
-    f.write(json.dumps(btree.node, cls=EnhancedJSONEncoder, indent=2))
+    with open("tree.dump.json", "w+") as f:
+        f.write(json.dumps(btree.node, cls=EnhancedJSONEncoder, indent=2))
