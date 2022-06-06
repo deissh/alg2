@@ -8,7 +8,7 @@ def create_table(s1: str, s2: str) -> List[List[int]]:
     n, m = len(s1) + 1, len(s2) + 1
 
     table = [
-        [1 for _ in range(n)] for _ in range(m)
+        [0 for _ in range(n)] for _ in range(m)
     ]  # fill table by def value
 
     for i, v in enumerate(s2):

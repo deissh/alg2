@@ -43,8 +43,21 @@ class HashTable(Generic[T]):
     def __len__(self):
         return len(self._storage)
 
-    def add(self, value: T):
-        index = self._hasher.hash(value) % len(self._storage)
+    def _add(self, value: T, index: int = 0):
+        index = (self._hasher.hash(value) + index) % len(self._storage)
         if self._storage[index] is not None:
+            if self._storage[index] == value:
+                return
+            if index > len(self._storage):
+                return
+
+            index += 1
             self.hash_miss += 1
+            return self._add(value, index)
         self._storage[index] = value
+
+    def add(self, value: T):
+        try:
+            return self._add(value)
+        except Exception:
+            pass

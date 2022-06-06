@@ -16,3 +16,12 @@ class TestHashTable(TestCase):
             ht.add(i)
 
         print('miss=', ht.hash_miss)
+
+    def test_insert_as_arr(self):
+        ht = HashTable[int](cap=5)
+
+        ht.add(1)
+        ht.add(2)
+        ht.add(3)
+
+        print('miss=', ht.hash_miss)
